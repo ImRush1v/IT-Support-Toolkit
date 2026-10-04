@@ -51,6 +51,21 @@ def check_disk_usage():
     print(f"Free Space:  {free_gb:.2f} GB")
     print(f"Disk Usage:  {used_percent:.1f}%")
 
+def dns_test():
+    print("\n--- DNS TEST ---")
+
+    domain = input("Enter a domain to test (e.g. google.com): ")
+
+    try:
+        ip_address = socket.gethostbyname(domain)
+        print("DNS resolution: SUCCESS")
+        print(f"Domain: {domain}")
+        print(f"Resolved IP: {ip_address}")
+
+    except socket.gaierror:
+        print("DNS resolution: FAILED")
+        print(f"Could not resolve {domain}")
+
 while True:
     print("\n" +"=" * 50)
     print("      IT Support Toolkit")
@@ -76,6 +91,9 @@ while True:
 
     elif choice == "4":
         check_disk_usage()
+
+    elif choice == "5":
+        dns_test()
 
     elif choice == "6":
         print("\nExiting the IT Support Toolkit...")
