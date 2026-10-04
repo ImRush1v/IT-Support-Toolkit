@@ -1,5 +1,6 @@
 import platform 
 import socket
+import subprocess
 
 def show_system_info():
     print("\n--- SYSTEM INFORMATION ---")
@@ -18,7 +19,22 @@ def show_network_info():
 
     print(f"Hostname: {hostname}")
     print(f"Local IP Address: {ip_address}")
-    
+
+def check_internet():
+    print("\n--- INTERNET CONNECTION TEST ---")
+    print("Testing connection...")
+
+    result = subprocess.run(
+        ["ping", "-n", "1", "8.8.8.8"],
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode == 0:
+        print("Internet connection: ONLINE")
+    else:
+        print("Internet connection: OFFLINE")
+
 while True:
     print("\n" +"=" * 50)
     print("      IT Support Toolkit")
@@ -38,6 +54,9 @@ while True:
 
     elif choice == "2":
         show_network_info()
+
+    elif choice == "3":
+        check_internet()
 
     elif choice == "6":
         print("\nExiting the IT Support Toolkit...")
