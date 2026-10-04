@@ -10,8 +10,17 @@ def show_system_info():
     print(f"Architecture: {platform.architecture()}")
     print(f"Processor: {platform.processor()}")
 
+def show_network_info():
+    print("\n--- NETWORK INFORMATION ---")
+
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+
+    print(f"Hostname: {hostname}")
+    print(f"Local IP Address: {ip_address}")
+    
 while True:
-    print("=" * 50)
+    print("\n" +"=" * 50)
     print("      IT Support Toolkit")
     print("=" * 50)
 
@@ -27,10 +36,12 @@ while True:
     if choice == "1":
         show_system_info()
 
+    elif choice == "2":
+        show_network_info()
+
     elif choice == "6":
         print("\nExiting the IT Support Toolkit...")
         break
 
     else:
         print("\nThat feature is not available yet.")
-        
