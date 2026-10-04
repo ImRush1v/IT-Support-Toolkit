@@ -1,0 +1,10 @@
+print("=" * 50)
+print("      IT Support Toolkit")
+print("=" * 50)
+
+print("\n1. System Information")
+print("2. Network Information")
+print("3. Check Internet Connection")
+print("4. Check Disk Usage")
+print("5. DNS Test")
+print("6. Exit")
