@@ -1,6 +1,7 @@
 import platform 
 import socket
 import subprocess
+import shutil
 
 def show_system_info():
     print("\n--- SYSTEM INFORMATION ---")
@@ -35,6 +36,21 @@ def check_internet():
     else:
         print("Internet connection: OFFLINE")
 
+def check_disk_usage():
+    print("\n--- DISK USAGE ---")
+
+    total, used, free = shutil.disk_usage("C:\\")
+
+    total_gb = total / (1024 ** 3)
+    used_gb = used / (1024 ** 3)
+    free_gb = free / (1024 ** 3)
+    used_percent = (used / total) * 100
+
+    print(f"Total Space: {total_gb:.2f} GB")
+    print(f"Used Space:  {used_gb:.2f} GB")
+    print(f"Free Space:  {free_gb:.2f} GB")
+    print(f"Disk Usage:  {used_percent:.1f}%")
+
 while True:
     print("\n" +"=" * 50)
     print("      IT Support Toolkit")
@@ -57,6 +73,9 @@ while True:
 
     elif choice == "3":
         check_internet()
+
+    elif choice == "4":
+        check_disk_usage()
 
     elif choice == "6":
         print("\nExiting the IT Support Toolkit...")
